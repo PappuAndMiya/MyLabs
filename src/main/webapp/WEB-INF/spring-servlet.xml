@@ -26,5 +26,11 @@
 	<bean name="generalApiService" class="in.sasi.service.impl.GeneralApiServiceImpl" parent="abstractApiService">
 	
 	</bean>
+	
+	<bean name="publicApiService" class="in.sasi.service.impl.PublicApiServiceImpl" parent="abstractApiService">
+	
+	</bean>
+	
+	
 
 </beans>

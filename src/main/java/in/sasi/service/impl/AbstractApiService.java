@@ -18,33 +18,20 @@ public class AbstractApiService {
 
 	private static final String HOST = "";
 
+	// General API
 	private static final String ENDPOINT_PING = "/sapi/v1/ping";
-
 	private static final String ENDPOINT_SERVER_TIME = "/sapi/v1/time";
-	
 	private static final String ENDPOINT_SYSTEM_STATUS = "/sapi/v1/systemStatus";
-	
 	private static final String ENDPOINT_EXCHANGE_INFO = "/sapi/v1/exchangeInfo";
 
+	// Public API
+	private static final String ENDPOINT_TICKERS = "/sapi/v1/tickers/24hr";
+	private static final String ENDPOINT_TICKER = "/sapi/v1/tickers/24hr?symbol=";
+	
+	
+
 	private static RequestConfig requestConfig;
-	
 	private static PoolingHttpClientConnectionManager connectionManager;
-
-	protected String getPingEndPoint() {
-		return HOST + ENDPOINT_PING;
-	}
-
-	protected String getServerTimeEndPoint() {
-		return HOST + ENDPOINT_SERVER_TIME;
-	}
-	
-	protected String getSystemStatusEndPoint() {
-		return HOST + ENDPOINT_SYSTEM_STATUS;
-	}
-	
-	protected String getExchangeInfoEndPoint() {
-		return HOST + ENDPOINT_EXCHANGE_INFO;
-	}
 
 	protected RestTemplate getRestTemplate() {
 		CloseableHttpClient httpClient = HttpClientBuilder
@@ -72,7 +59,7 @@ public class AbstractApiService {
 		if (null == requestConfig) {
 			requestConfig = RequestConfig
 					.custom()
-					.setConnectionRequestTimeout(5000) // timeout to get connection from pool
+					.setConnectionRequestTimeout(3000) // timeout to get connection from pool
 					.setSocketTimeout(3000) // standard connection timeout
 					.setConnectTimeout(3000) // standard connection timeout
 					.build();
@@ -89,4 +76,28 @@ public class AbstractApiService {
 		return connectionManager;
 	}
 
+	protected String getPingEndPoint() {
+		return HOST + ENDPOINT_PING;
+	}
+
+	protected String getServerTimeEndPoint() {
+		return HOST + ENDPOINT_SERVER_TIME;
+	}
+	
+	protected String getSystemStatusEndPoint() {
+		return HOST + ENDPOINT_SYSTEM_STATUS;
+	}
+	
+	protected String getExchangeInfoEndPoint() {
+		return HOST + ENDPOINT_EXCHANGE_INFO;
+	}
+	
+	protected String getTickersEndPoint() {
+		return HOST + ENDPOINT_TICKERS;
+	}
+	
+	protected String getTickerEndPoint(String symbol) {
+		return HOST + ENDPOINT_TICKER + symbol;
+	}
+	
 }
