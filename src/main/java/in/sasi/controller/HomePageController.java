@@ -1,6 +1,5 @@
 package in.sasi.controller;
 
-import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -20,12 +19,9 @@ public class HomePageController {
 	
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-		model.addAttribute("appServerTime", formattedDate);
-		model.addAttribute("platformPing", generalApiService.ping());
-		//model.addAttribute("platformTime", generalApiService.getServerTime());
+		model.addAttribute("appServerTime", new Date());
+		//model.addAttribute("platformPing", generalApiService.ping());
+		model.addAttribute("platformTime", generalApiService.getServerTime());
 		return "dashboard";
 	}
 

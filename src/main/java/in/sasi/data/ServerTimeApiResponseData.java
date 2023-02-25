@@ -1,13 +1,13 @@
 package in.sasi.data;
 
 public class ServerTimeApiResponseData {
-	private Integer serverTime;
+	private long serverTime;
 
-	public Integer getServerTime() {
+	public long getServerTime() {
 		return serverTime;
 	}
 
-	public void setServerTime(Integer serverTime) {
+	public void setServerTime(long serverTime) {
 		this.serverTime = serverTime;
 	}
 }
