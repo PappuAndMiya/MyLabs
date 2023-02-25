@@ -3,4 +3,5 @@
 <li><b>General Service - Platform Ping:</b> ${platformPing}</li>
 <li><b>General Service - Platform Time:</b> ${platformTime}</li>
 <li><b>General Service - Platform Status:</b> ${platformStatus}</li>
+<li><b>General Service - Platform Info:</b> ${platformInfo}</li>
 </ul>

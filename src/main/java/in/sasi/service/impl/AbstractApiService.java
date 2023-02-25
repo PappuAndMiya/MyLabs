@@ -23,6 +23,8 @@ public class AbstractApiService {
 	private static final String ENDPOINT_SERVER_TIME = "/sapi/v1/time";
 	
 	private static final String ENDPOINT_SYSTEM_STATUS = "/sapi/v1/systemStatus";
+	
+	private static final String ENDPOINT_EXCHANGE_INFO = "/sapi/v1/exchangeInfo";
 
 	private static RequestConfig requestConfig;
 	
@@ -38,6 +40,10 @@ public class AbstractApiService {
 	
 	protected String getSystemStatusEndPoint() {
 		return HOST + ENDPOINT_SYSTEM_STATUS;
+	}
+	
+	protected String getExchangeInfoEndPoint() {
+		return HOST + ENDPOINT_EXCHANGE_INFO;
 	}
 
 	protected RestTemplate getRestTemplate() {

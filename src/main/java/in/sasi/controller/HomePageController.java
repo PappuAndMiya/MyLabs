@@ -22,7 +22,8 @@ public class HomePageController {
 		model.addAttribute("appServerTime", new Date());
 		//model.addAttribute("platformPing", generalApiService.ping());
 		//model.addAttribute("platformTime", generalApiService.getServerTime());
-		model.addAttribute("platformStatus", generalApiService.getSystemStatus());
+		//model.addAttribute("platformStatus", generalApiService.getSystemStatus());
+		model.addAttribute("platformInfo", generalApiService.getExchangeInfo());
 		return "dashboard";
 	}
 
