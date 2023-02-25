@@ -31,6 +31,7 @@ public class HomePageController {
 		
 		//model.addAttribute("tickers", publicApiService.getTickers());
 		model.addAttribute("tickersByQuoteAsset", publicApiService.getTickersByQuoteAsset("inr"));
+		//model.addAttribute("ticker", publicApiService.getTicker("btcinr"));
 		
 		return "dashboard";
 	}

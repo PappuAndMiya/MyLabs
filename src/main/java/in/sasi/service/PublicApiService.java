@@ -8,8 +8,8 @@ public interface PublicApiService {
 
 	List<TickerApiResponseData> getTickers();
 	
-	TickerApiResponseData getTicker(String symbol);
-
 	List<TickerApiResponseData> getTickersByQuoteAsset(String quoteAsset);
+
+	TickerApiResponseData getTicker(String symbol);
 	
 }

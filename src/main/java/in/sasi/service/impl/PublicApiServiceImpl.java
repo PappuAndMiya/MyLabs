@@ -29,7 +29,10 @@ public class PublicApiServiceImpl extends AbstractApiService implements PublicAp
 
 	@Override
 	public TickerApiResponseData getTicker(String symbol) {
-		return null;
+		RestTemplate restTemplate = getRestTemplate();
+		ResponseEntity<TickerApiResponseData> responseEntity = restTemplate.getForEntity(getTickerEndPoint(symbol),
+				TickerApiResponseData.class);
+		return responseEntity.getBody();
 	}
 
 }

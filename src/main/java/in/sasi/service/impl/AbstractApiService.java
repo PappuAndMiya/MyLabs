@@ -26,7 +26,7 @@ public class AbstractApiService {
 
 	// Public API
 	private static final String ENDPOINT_TICKERS = "/sapi/v1/tickers/24hr";
-	private static final String ENDPOINT_TICKER = "/sapi/v1/tickers/24hr?symbol=";
+	private static final String ENDPOINT_TICKER = "/sapi/v1/ticker/24hr?symbol=";
 	
 	
 

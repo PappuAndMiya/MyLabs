@@ -1,5 +1,7 @@
 package in.sasi.data;
 
+import org.springframework.util.NumberUtils;
+
 public class TickerApiResponseData {
 	private String symbol;
 	private String baseAsset;
@@ -12,6 +14,8 @@ public class TickerApiResponseData {
 	private String bidPrice;
 	private String askPrice;
 	private long at;
+	
+	private double change24Hrs;
 
 	public String getSymbol() {
 		return symbol;
@@ -100,4 +104,16 @@ public class TickerApiResponseData {
 	public void setAt(long at) {
 		this.at = at;
 	}
+
+	public double getChange24Hrs() {
+		double startPriceLong = NumberUtils.parseNumber(lastPrice.trim(), Double.class);
+		double openPriceLong = NumberUtils.parseNumber(openPrice.trim(), Double.class);
+		setChange24Hrs((100 * (startPriceLong / openPriceLong)) - 100);
+		return change24Hrs;
+	}
+
+	private void setChange24Hrs(double change24Hrs) {
+		this.change24Hrs = change24Hrs;
+	}
+	
 }
