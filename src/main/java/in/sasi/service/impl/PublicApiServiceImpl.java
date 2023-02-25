@@ -1,6 +1,8 @@
 package in.sasi.service.impl;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,8 +25,17 @@ public class PublicApiServiceImpl extends AbstractApiService implements PublicAp
 
 	@Override
 	public List<TickerApiResponseData> getTickersByQuoteAsset(String quoteAsset) {
-		return getTickers().stream().filter(ticker -> quoteAsset.equals(ticker.getQuoteAsset()))
-				.collect(Collectors.toList());
+		List<TickerApiResponseData> tickersByQuoteAsset = getTickers().stream().filter(ticker -> quoteAsset.equals(ticker.getQuoteAsset()))
+		.collect(Collectors.toList());
+		
+		Collections.sort(tickersByQuoteAsset, new Comparator<TickerApiResponseData>() {
+	        @Override
+	        public int compare(TickerApiResponseData o1, TickerApiResponseData o2) {
+	            return Double.compare(o2.getChange24Hrs(), o1.getChange24Hrs());
+	        }           
+	    });
+		
+		return tickersByQuoteAsset;
 	}
 
 	@Override

@@ -1,8 +1,13 @@
 package in.sasi.data;
 
+import java.text.DecimalFormat;
+
 import org.springframework.util.NumberUtils;
 
 public class TickerApiResponseData {
+	
+	private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.###");
+	
 	private String symbol;
 	private String baseAsset;
 	private String quoteAsset;
@@ -15,7 +20,7 @@ public class TickerApiResponseData {
 	private String askPrice;
 	private long at;
 	
-	private double change24Hrs;
+	private Double change24Hrs = null;
 
 	public String getSymbol() {
 		return symbol;
@@ -106,9 +111,12 @@ public class TickerApiResponseData {
 	}
 
 	public double getChange24Hrs() {
-		double startPriceLong = NumberUtils.parseNumber(lastPrice.trim(), Double.class);
-		double openPriceLong = NumberUtils.parseNumber(openPrice.trim(), Double.class);
-		setChange24Hrs((100 * (startPriceLong / openPriceLong)) - 100);
+		if (null == change24Hrs) {
+			double startPriceLong = NumberUtils.parseNumber(lastPrice.trim(), Double.class);
+			double openPriceLong = NumberUtils.parseNumber(openPrice.trim(), Double.class);
+			double changeIn24Hrs = (100 * (startPriceLong / openPriceLong)) - 100;
+			setChange24Hrs(Double.valueOf(DECIMAL_FORMAT.format(changeIn24Hrs)));
+		}
 		return change24Hrs;
 	}
 
