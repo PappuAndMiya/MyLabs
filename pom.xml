@@ -1,12 +1,12 @@
 <project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>Apps</groupId>
-	<artifactId>Apps</artifactId>
+	<groupId>MyLabs</groupId>
+	<artifactId>MyLabs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Apps</name>
-	<description>Apps</description>
+	<name>MyLabs</name>
+	<description>MyLabs</description>
 	<!-- Add Spring Web and MVC dependencies -->
 	<dependencies>
 		<dependency>
