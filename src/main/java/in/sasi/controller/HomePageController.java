@@ -21,7 +21,8 @@ public class HomePageController {
 	public String home(Locale locale, Model model) {
 		model.addAttribute("appServerTime", new Date());
 		//model.addAttribute("platformPing", generalApiService.ping());
-		model.addAttribute("platformTime", generalApiService.getServerTime());
+		//model.addAttribute("platformTime", generalApiService.getServerTime());
+		model.addAttribute("platformStatus", generalApiService.getSystemStatus());
 		return "dashboard";
 	}
 

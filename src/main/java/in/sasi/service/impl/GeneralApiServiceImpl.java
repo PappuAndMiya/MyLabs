@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import in.sasi.data.ServerTimeApiResponseData;
+import in.sasi.data.SystemStatusApiResponseData;
 import in.sasi.service.GeneralApiService;
 
 public class GeneralApiServiceImpl extends AbstractApiService implements GeneralApiService {
@@ -23,6 +24,13 @@ public class GeneralApiServiceImpl extends AbstractApiService implements General
 		RestTemplate restTemplate = getRestTemplate();
 		ResponseEntity<ServerTimeApiResponseData> responseEntity = restTemplate.getForEntity(getServerTimeEndPoint(), ServerTimeApiResponseData.class);
 		return new Date(responseEntity.getBody().getServerTime());
+	}
+
+	@Override
+	public String getSystemStatus() {
+		RestTemplate restTemplate = getRestTemplate();
+		ResponseEntity<SystemStatusApiResponseData> responseEntity = restTemplate.getForEntity(getSystemStatusEndPoint(), SystemStatusApiResponseData.class);
+		return responseEntity.getBody().getStatus();
 	}
 
 }

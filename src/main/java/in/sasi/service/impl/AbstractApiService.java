@@ -21,6 +21,8 @@ public class AbstractApiService {
 	private static final String ENDPOINT_PING = "/sapi/v1/ping";
 
 	private static final String ENDPOINT_SERVER_TIME = "/sapi/v1/time";
+	
+	private static final String ENDPOINT_SYSTEM_STATUS = "/sapi/v1/systemStatus";
 
 	private static RequestConfig requestConfig;
 	
@@ -32,6 +34,10 @@ public class AbstractApiService {
 
 	protected String getServerTimeEndPoint() {
 		return HOST + ENDPOINT_SERVER_TIME;
+	}
+	
+	protected String getSystemStatusEndPoint() {
+		return HOST + ENDPOINT_SYSTEM_STATUS;
 	}
 
 	protected RestTemplate getRestTemplate() {

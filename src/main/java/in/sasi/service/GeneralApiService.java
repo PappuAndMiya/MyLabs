@@ -8,4 +8,5 @@ public interface GeneralApiService {
 	
 	Date getServerTime();
 	
+	String getSystemStatus();
 }
