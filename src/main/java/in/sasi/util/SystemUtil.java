@@ -6,7 +6,7 @@ import java.util.Properties;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
-import in.sasi.MyLabsConstant;
+import in.sasi.constant.MyLabsConstant;
 
 public final class SystemUtil {
 
@@ -26,7 +26,7 @@ public final class SystemUtil {
 
 	private static void loadSystemProperties() {
 		try {
-			SYSTEM_CONFIG.load(getClassLoader().getResourceAsStream(MyLabsConstant.SYSTEM_PROPERTIES));
+			SYSTEM_CONFIG.load(getClassLoader().getResourceAsStream(MyLabsConstant.SYSTEM_PROPERTIES_FILE));
 		} catch (IOException ex) {
 			LOG.error("Error while loading system config", ex);
 		}

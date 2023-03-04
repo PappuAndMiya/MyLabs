@@ -7,7 +7,7 @@ import javax.sound.sampled.Clip;
 
 import org.apache.log4j.Logger;
 
-import in.sasi.MyLabsConstant;
+import in.sasi.constant.MyLabsConstant;
 
 public class MyLabsServletContextListener implements ServletContextListener {
 
