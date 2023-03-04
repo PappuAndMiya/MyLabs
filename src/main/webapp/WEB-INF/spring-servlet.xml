@@ -18,7 +18,6 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	
 	<bean name="abstractApiService" class="in.sasi.service.impl.AbstractApiService">
 		
 	</bean>
@@ -28,6 +27,10 @@
 	</bean>
 	
 	<bean name="publicApiService" class="in.sasi.service.impl.PublicApiServiceImpl" parent="abstractApiService">
+	
+	</bean>
+	
+	<bean name="audioService" class="in.sasi.service.impl.AudioServiceImpl">
 	
 	</bean>
 	

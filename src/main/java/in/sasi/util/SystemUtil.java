@@ -1,18 +1,39 @@
 package in.sasi.util;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
+
+import in.sasi.MyLabsConstant;
 
 public final class SystemUtil {
 
-	private static final Map<String, String> SYSTEM_CONFIG = new HashMap<String, String>();
+	private static final Logger LOG = Logger.getLogger(SystemUtil.class);
+	private static final Properties SYSTEM_CONFIG = new Properties();
 
-	static {
-		SYSTEM_CONFIG.put("key", "value");
+	private SystemUtil() {
+		
 	}
 	
 	public static String getProperty(String key) {
-		return SYSTEM_CONFIG.get(key);
+		if(SYSTEM_CONFIG.isEmpty()) {
+			loadSystemProperties();
+		}
+		return (String) SYSTEM_CONFIG.getOrDefault(key, StringUtils.EMPTY);
+	}
+
+	private static void loadSystemProperties() {
+		try {
+			SYSTEM_CONFIG.load(getClassLoader().getResourceAsStream(MyLabsConstant.SYSTEM_PROPERTIES));
+		} catch (IOException ex) {
+			LOG.error("Error while loading system config", ex);
+		}
+	}
+	
+	private static ClassLoader getClassLoader() {
+		return MyLabsConstant.getInstance().getClass().getClassLoader();
 	}
 
 }
