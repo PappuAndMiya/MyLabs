@@ -26,7 +26,9 @@ public final class SystemUtil {
 
 	private static void loadSystemProperties() {
 		try {
-			SYSTEM_CONFIG.load(getClassLoader().getResourceAsStream(MyLabsConstant.SYSTEM_PROPERTIES_FILE));
+			synchronized (SYSTEM_CONFIG) {
+				SYSTEM_CONFIG.load(getClassLoader().getResourceAsStream(MyLabsConstant.SYSTEM_PROPERTIES_FILE));
+			}
 		} catch (IOException ex) {
 			LOG.error("Error while loading system config", ex);
 		}

@@ -14,19 +14,22 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import in.sasi.constant.MyLabsConstant;
+import in.sasi.util.SystemUtil;
+
 public class AbstractApiService {
 
-	private static final String HOST = "";
+	private static final String ENDPOINT_HOST = SystemUtil.getProperty(MyLabsConstant.ENDPOINT_HOST);
 
 	// General API
-	private static final String ENDPOINT_PING = "/sapi/v1/ping";
-	private static final String ENDPOINT_SERVER_TIME = "/sapi/v1/time";
-	private static final String ENDPOINT_SYSTEM_STATUS = "/sapi/v1/systemStatus";
-	private static final String ENDPOINT_EXCHANGE_INFO = "/sapi/v1/exchangeInfo";
+	private static final String ENDPOINT_PING = SystemUtil.getProperty(MyLabsConstant.ENDPOINT_PING);
+	private static final String ENDPOINT_SERVER_TIME = SystemUtil.getProperty(MyLabsConstant.ENDPOINT_SERVER_TIME);
+	private static final String ENDPOINT_SYSTEM_STATUS = SystemUtil.getProperty(MyLabsConstant.ENDPOINT_SYSTEM_STATUS);
+	private static final String ENDPOINT_EXCHANGE_INFO = SystemUtil.getProperty(MyLabsConstant.ENDPOINT_EXCHANGE_INFO);
 
 	// Public API
-	private static final String ENDPOINT_TICKERS = "/sapi/v1/tickers/24hr";
-	private static final String ENDPOINT_TICKER = "/sapi/v1/ticker/24hr?symbol=";
+	private static final String ENDPOINT_TICKERS = SystemUtil.getProperty(MyLabsConstant.ENDPOINT_TICKERS);
+	private static final String ENDPOINT_TICKER = SystemUtil.getProperty(MyLabsConstant.ENDPOINT_TICKER);
 	
 	
 
@@ -77,27 +80,27 @@ public class AbstractApiService {
 	}
 
 	protected String getPingEndPoint() {
-		return HOST + ENDPOINT_PING;
+		return ENDPOINT_HOST + ENDPOINT_PING;
 	}
 
 	protected String getServerTimeEndPoint() {
-		return HOST + ENDPOINT_SERVER_TIME;
+		return ENDPOINT_HOST + ENDPOINT_SERVER_TIME;
 	}
 	
 	protected String getSystemStatusEndPoint() {
-		return HOST + ENDPOINT_SYSTEM_STATUS;
+		return ENDPOINT_HOST + ENDPOINT_SYSTEM_STATUS;
 	}
 	
 	protected String getExchangeInfoEndPoint() {
-		return HOST + ENDPOINT_EXCHANGE_INFO;
+		return ENDPOINT_HOST + ENDPOINT_EXCHANGE_INFO;
 	}
 	
 	protected String getTickersEndPoint() {
-		return HOST + ENDPOINT_TICKERS;
+		return ENDPOINT_HOST + ENDPOINT_TICKERS;
 	}
 	
 	protected String getTickerEndPoint(String symbol) {
-		return HOST + ENDPOINT_TICKER + symbol;
+		return ENDPOINT_HOST + ENDPOINT_TICKER + symbol;
 	}
 	
 }
